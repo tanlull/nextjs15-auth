@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+/* ── Design Tokens ── */
+@theme {
+  /* Semantic color tokens (OKLCH for better perception) */
+  --color-background: oklch(98.5% 0.005 264);
+  --color-foreground: oklch(14.5% 0.025 264);
+
+  --color-primary: oklch(45% 0.2 260);
+  --color-primary-foreground: oklch(98% 0.01 264);
+
+  --color-secondary: oklch(96% 0.01 264);
+  --color-secondary-foreground: oklch(14.5% 0.025 264);
+
+  --color-muted: oklch(96% 0.01 264);
+  --color-muted-foreground: oklch(46% 0.02 264);
+
+  --color-accent: oklch(93% 0.02 260);
+  --color-accent-foreground: oklch(14.5% 0.025 264);
+
+  --color-destructive: oklch(53% 0.22 27);
+  --color-destructive-foreground: oklch(98% 0.01 264);
+
+  --color-border: oklch(91% 0.01 264);
+  --color-ring: oklch(45% 0.2 260);
+
+  --color-card: oklch(100% 0 0);
+  --color-card-foreground: oklch(14.5% 0.025 264);
+
+  --color-ring-offset: oklch(100% 0 0);
+
+  /* Radius tokens */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+
+  /* Animation tokens */
+  --animate-fade-in: fade-in 0.5s ease-out;
+  --animate-fade-in-up: fade-in-up 0.6s ease-out;
+  --animate-fade-in-down: fade-in-down 0.5s ease-out;
+  --animate-scale-in: scale-in 0.4s ease-out;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-shimmer: shimmer 2s linear infinite;
+  --animate-pulse-soft: pulse-soft 3s ease-in-out infinite;
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(1.5rem); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fade-in-down {
+    from { opacity: 0; transform: translateY(-1rem); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scale-in {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+}
+
+/* ── Fonts ── */
+@theme inline {
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+}
+
+/* ── Dark Mode Variant (v4 pattern) ── */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ── Dark Mode Token Overrides ── */
+.dark {
+  --color-background: oklch(12% 0.02 264);
+  --color-foreground: oklch(95% 0.01 264);
+
+  --color-primary: oklch(62% 0.2 260);
+  --color-primary-foreground: oklch(98% 0.01 264);
+
+  --color-secondary: oklch(20% 0.02 264);
+  --color-secondary-foreground: oklch(95% 0.01 264);
+
+  --color-muted: oklch(20% 0.02 264);
+  --color-muted-foreground: oklch(65% 0.02 264);
+
+  --color-accent: oklch(22% 0.03 260);
+  --color-accent-foreground: oklch(95% 0.01 264);
+
+  --color-destructive: oklch(42% 0.15 27);
+  --color-destructive-foreground: oklch(98% 0.01 264);
+
+  --color-border: oklch(25% 0.02 264);
+  --color-ring: oklch(62% 0.2 260);
+
+  --color-card: oklch(16% 0.02 264);
+  --color-card-foreground: oklch(95% 0.01 264);
+
+  --color-ring-offset: oklch(12% 0.02 264);
+}
+
+/* ── Base Styles ── */
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
